@@ -30,23 +30,23 @@ class _Subtitle extends StatelessWidget{
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return this.subtitle != null?
-      Padding(
-          padding: const EdgeInsets.fromLTRB(48.0, 16.0, 8.0, 0.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                  this.subtitle.toUpperCase(),
-                  style: theme.textTheme.subtitle
-              ),
-              Container(
-                width: 32.0,
-                height: 8.0,
-                color: kCSBGreen,
-              ),
-            ],
-          )
-      ):Container();
+    Padding(
+        padding: const EdgeInsets.fromLTRB(48.0, 16.0, 8.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            Text(
+                this.subtitle.toUpperCase(),
+                style: theme.textTheme.subtitle
+            ),
+            Container(
+              width: 32.0,
+              height: 8.0,
+              color: kCSBGreen,
+            ),
+          ],
+        )
+    ):Container();
   }
 }
 class _FrontLayer extends StatelessWidget {
@@ -63,7 +63,6 @@ class _FrontLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
 
     return Material(
       elevation: 16.0,
@@ -77,9 +76,9 @@ class _FrontLayer extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
             child: Container(
-              height: 48.0,
-              alignment: AlignmentDirectional.centerStart,
-              child: _Subtitle(subtitle: subtitle)
+                height: 48.0,
+                alignment: AlignmentDirectional.centerStart,
+                child: _Subtitle(subtitle: subtitle)
             ),
           ),
           Expanded(
@@ -266,7 +265,19 @@ class _BackdropState extends State<Backdrop>
       key: _backdropKey,
       children: <Widget>[
         ExcludeSemantics(
-          child: widget.backLayer,
+          child: Column(
+            children: [Container(
+              child: widget.backLayer,
+              constraints: BoxConstraints(
+                maxHeight: constraints.biggest.height - layerTitleHeight
+              ),
+            ),
+              Container(
+                height: layerTitleHeight,
+                color: kCSBDarkBlue,
+              )
+            ]
+          ),
           excluding: _frontLayerVisible,
         ),
         PositionedTransition(
