@@ -265,18 +265,20 @@ class _BackdropState extends State<Backdrop>
       key: _backdropKey,
       children: <Widget>[
         ExcludeSemantics(
-          child: Column(
-            children: [Container(
-              child: widget.backLayer,
-              constraints: BoxConstraints(
-                maxHeight: constraints.biggest.height - layerTitleHeight
+          child: Container(
+            color: kCSBDarkBlue,
+            child: Column(
+              children: [Container(
+                child: widget.backLayer,
+                constraints: BoxConstraints(
+                  maxHeight: constraints.biggest.height - layerTitleHeight
+                ),
               ),
+                Container(
+                  height: layerTitleHeight,
+                )
+              ]
             ),
-              Container(
-                height: layerTitleHeight,
-                color: kCSBDarkBlue,
-              )
-            ]
           ),
           excluding: _frontLayerVisible,
         ),

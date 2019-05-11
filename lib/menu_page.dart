@@ -72,15 +72,14 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
+    return  Container(
         padding: EdgeInsets.only(top: 40.0),
         color: kCSBDarkBlue,
-        child: ListView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: _categories
             .map((Category c) => _buildCategory(c, context))
             .toList()),
-      ),
     );
   }
 }
