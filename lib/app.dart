@@ -12,11 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'package:CSB/projects_page.dart';
 import 'package:flutter/material.dart';
 
+import 'about_page.dart';
 import 'backdrop.dart';
 import 'colors.dart';
-import 'home.dart';
+import 'events.dart';
+import 'home_page.dart';
+import 'join_us_page.dart';
 import 'menu_page.dart';
 import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
@@ -29,6 +33,7 @@ class CSBApp extends StatefulWidget {
 
 class _CSBAppState extends State<CSBApp> {
   Category _currentCategory = Category.home;
+  Widget _frontPage = HomePage();
 
   @override
   Widget build(BuildContext context){
@@ -37,7 +42,7 @@ class _CSBAppState extends State<CSBApp> {
       debugShowCheckedModeBanner: false,
       home: Backdrop(
         currentCategory: _currentCategory,
-        frontLayer: HomePage(category: _currentCategory),
+        frontLayer: _frontPage,
         backLayer: MenuPage(
           currentCategory: _currentCategory,
           onCategoryTap: _onCategoryTap,
@@ -66,6 +71,23 @@ class _CSBAppState extends State<CSBApp> {
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
+      switch (category){
+        case Category.home:
+          _frontPage = HomePage();
+          break;
+        case Category.events:
+          _frontPage = EventsPage(category: Category.events,);
+          break;
+        case Category.projects:
+          _frontPage = ProjectsPage();
+          break;
+        case Category.join_us:
+          _frontPage = JoinUsPage();
+          break;
+        case Category.about:
+          _frontPage = AboutPage();
+          break;
+      }
     });
   }
 }

@@ -18,10 +18,10 @@ import 'model/products_repository.dart';
 import 'model/product.dart';
 import 'supplemental/asymmetric_view.dart';
 
-class HomePage extends StatelessWidget {
+class EventsPage extends StatelessWidget {
   final Category category;
 
-  const HomePage({this.category: Category.home});
+  const EventsPage({this.category: Category.home});
 
   @override
   Widget build(BuildContext context) {
