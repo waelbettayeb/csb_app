@@ -14,16 +14,16 @@
 
 import 'package:flutter/material.dart';
 
-import '../model/product.dart';
+import '../model/event.dart';
 import 'product_card.dart';
 
 class TwoProductCardColumn extends StatelessWidget {
   TwoProductCardColumn({
     this.bottom,
     this.top,
-  }) : assert(bottom != null);
+  }) ;
 
-  final Product bottom, top;
+  final Event bottom, top;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class TwoProductCardColumn extends StatelessWidget {
       const spacerHeight = 44.0;
 
       double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
-      double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
+      double heightOfImages = heightOfCards - EventCard.kTextBoxHeight;
       double imageAspectRatio = heightOfImages >= 0.0
           ? constraints.biggest.width / heightOfImages
           : 49.0 / 33.0;
@@ -43,7 +43,7 @@ class TwoProductCardColumn extends StatelessWidget {
           Padding(
             padding: EdgeInsetsDirectional.only(start: 28.0),
             child: top != null
-                ? ProductCard(
+                ? EventCard(
               imageAspectRatio: imageAspectRatio,
               product: top,
             )
@@ -54,7 +54,7 @@ class TwoProductCardColumn extends StatelessWidget {
           SizedBox(height: spacerHeight),
           Padding(
             padding: EdgeInsetsDirectional.only(end: 28.0),
-            child: ProductCard(
+            child: EventCard(
               imageAspectRatio: imageAspectRatio,
               product: bottom,
             ),
@@ -66,9 +66,9 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  OneProductCardColumn({this.product});
+  OneProductCardColumn({this.event});
 
-  final Product product;
+  final Event event;
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +79,8 @@ class OneProductCardColumn extends StatelessWidget {
         SizedBox(
           height: 40.0,
         ),
-        ProductCard(
-          product: product,
+        EventCard(
+          product: event,
         ),
       ],
     );

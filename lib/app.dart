@@ -18,11 +18,11 @@ import 'package:flutter/material.dart';
 import 'about_page.dart';
 import 'backdrop.dart';
 import 'colors.dart';
-import 'events.dart';
+import 'events_page.dart';
 import 'home_page.dart';
 import 'join_us_page.dart';
 import 'menu_page.dart';
-import 'model/product.dart';
+import 'model/event.dart';
 import 'supplemental/cut_corners_border.dart';
 import 'package:flutter/services.dart';
 
@@ -76,7 +76,7 @@ class _CSBAppState extends State<CSBApp> {
           _frontPage = HomePage();
           break;
         case Category.events:
-          _frontPage = EventsPage(category: Category.events,);
+          _frontPage = EventsPage();
           break;
         case Category.projects:
           _frontPage = ProjectsPage();

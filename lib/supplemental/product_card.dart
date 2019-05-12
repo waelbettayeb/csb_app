@@ -15,14 +15,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../model/product.dart';
+import '../model/event.dart';
 
-class ProductCard extends StatelessWidget {
-  ProductCard({this.imageAspectRatio: 33 / 49, this.product})
+class EventCard extends StatelessWidget {
+  EventCard({this.imageAspectRatio: 33 / 49, this.product})
       : assert(imageAspectRatio == null || imageAspectRatio > 0);
 
   final double imageAspectRatio;
-  final Product product;
+  final Event product;
 
   static final kTextBoxHeight = 65.0;
 
@@ -64,7 +64,7 @@ class ProductCard extends StatelessWidget {
               SizedBox(height: 4.0),
               // TODO(larche): Make subtitle2 when available
               Text(
-                product == null ? '' : formatter.format(product.price),
+                product == null ? '' : formatter.format(product.date),
                 style: theme.textTheme.caption,
               ),
             ],

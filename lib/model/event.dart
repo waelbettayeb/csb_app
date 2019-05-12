@@ -12,19 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
-import 'model/products_repository.dart';
-import 'model/product.dart';
-import 'supplemental/asymmetric_view.dart';
+enum Category { home, events, projects, join_us, about}
 
-class EventsPage extends StatelessWidget {
-  final Category category;
+class Event {
+  const Event({
+    @required this.id,
+    @required this.isFeatured,
+    @required this.name,
+    @required this.date,
+  })  : assert(id != null),
+        assert(isFeatured != null),
+        assert(name != null),
+        assert(date != null);
 
-  const EventsPage({this.category: Category.home});
+  final int id;
+  final bool isFeatured;
+  final String name;
+  final int date;
+
+  String get assetName => '$id-0.jpg';
+  String get assetPackage => 'shrine_images';
 
   @override
-  Widget build(BuildContext context) {
-    return AsymmetricView(products: ProductsRepository.loadProducts(category));
-  }
+  String toString() => "$name (id=$id)";
 }

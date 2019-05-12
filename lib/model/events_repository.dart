@@ -12,88 +12,75 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'product.dart';
+import 'event.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ProductsRepository {
-  static List<Product> loadProducts(Category category) {
-    const allProducts = <Product> [
-      Product(
-        category: Category.events,
+class EventsRepository {
+  static List<Event> loadEvents() {
+
+    const allProducts = <Event> [
+      Event(
         id: 9,
         isFeatured: true,
         name: 'Gilt desk trio',
-        price: 58,
+        date: 58,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 10,
         isFeatured: false,
         name: 'Copper wire rack',
-        price: 18,
+        date: 18,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 11,
         isFeatured: false,
         name: 'Soothe ceramic set',
-        price: 28,
+        date: 28,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 12,
         isFeatured: false,
         name: 'Hurrahs tea set',
-        price: 34,
+        date: 34,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 13,
         isFeatured: true,
         name: 'Blue stone mug',
-        price: 18,
+        date: 18,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 14,
         isFeatured: true,
         name: 'Rainwater tray',
-        price: 27,
+        date: 27,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 15,
         isFeatured: true,
         name: 'Chambray napkins',
-        price: 16,
+        date: 16,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 16,
         isFeatured: true,
         name: 'Succulent planters',
-        price: 16,
+        date: 16,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 17,
         isFeatured: false,
         name: 'Quartet table',
-        price: 175,
+        date: 175,
       ),
-      Product(
-        category: Category.events,
+      Event(
         id: 18,
         isFeatured: true,
         name: 'Kitchen quattro',
-        price: 129,
+        date: 129,
       ),
     ];
-    if (category == Category.events) {
-      return allProducts;
-    } else {
-      return allProducts.where((Product p) {
-        return p.category == category;
-      }).toList();
+      return allProducts.toList();
     }
   }
-}
+

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "705421687884",
+    "firebase_url": "https://csb-app-wael.firebaseio.com",
+    "project_id": "csb-app-wael",
+    "storage_bucket": "csb-app-wael.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:705421687884:android:08e99d28c6d5346b",
+        "android_client_info": {
+          "package_name": "com.wael.csb_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "705421687884-re10btffhm5qi824lhhqkd2uo3og9gn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD-lrBayCCA5mQyFVmx9gMguUvKum4SRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "705421687884-re10btffhm5qi824lhhqkd2uo3og9gn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

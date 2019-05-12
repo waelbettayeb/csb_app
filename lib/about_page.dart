@@ -6,7 +6,7 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "about page"
+        "About page"
       ),
     );
   }

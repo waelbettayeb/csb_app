@@ -2,6 +2,7 @@ name: CSB
 description: CSB app made by Wael Mohamed KHELIL,
 
 dependencies:
+  cloud_firestore:
   flutter:
     sdk: flutter
   intl: ^0.15.6
