@@ -18,7 +18,9 @@ import 'product_columns.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AsymmetricView extends StatelessWidget {
-  AsymmetricView({Key key});
+  String type;
+
+  AsymmetricView({Key key, @required String this.type}):assert(type != null);
 
   Widget _buildColumns(BuildContext context, DocumentSnapshot document, int index) {
     Event event = Event(id: document.documentID, name: document["name"], image_url: document["image_url"], date: document["date"].toDate());
@@ -76,7 +78,7 @@ class AsymmetricView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-        stream: Firestore.instance.collection('events').snapshots(),
+        stream: Firestore.instance.collection(this.type).snapshots(),
         builder: (context, snapshot) {
           if(!snapshot.hasData) return Center(child: const Text('Loading...'));
           return ListView.builder(

@@ -43,7 +43,7 @@ class EventCard extends StatelessWidget {
           child: imageWidget,
         ),
         SizedBox(
-          height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor,
+          height: kTextBoxHeight * MediaQuery.of(context).textScaleFactor + 10,
           width: 121.0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -52,10 +52,13 @@ class EventCard extends StatelessWidget {
               // TODO(larche): Make headline6 when available
               Text(
                 (event == null || event.name == null) ? '' : event.name,
-                style: theme.textTheme.button,
+                style: theme.textTheme.button.copyWith(
+                  fontWeight: FontWeight.w800,
+                ),
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+                maxLines: 2,
+                textAlign: TextAlign.center,
               ),
               SizedBox(height: 4.0),
               // TODO(larche): Make subtitle2 when available

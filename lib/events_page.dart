@@ -22,6 +22,6 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AsymmetricView();
+    return AsymmetricView(type:'events');
   }
 }
