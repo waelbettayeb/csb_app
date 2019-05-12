@@ -19,18 +19,15 @@ enum Category { home, events, projects, join_us, about}
 class Event {
   const Event({
     @required this.id,
-    @required this.isFeatured,
     @required this.name,
+    @required this.image_url,
     @required this.date,
-  })  : assert(id != null),
-        assert(isFeatured != null),
-        assert(name != null),
-        assert(date != null);
+  })  : assert(id != null);
 
-  final int id;
-  final bool isFeatured;
+  final String id;
   final String name;
-  final int date;
+  final String image_url;
+  final DateTime date;
 
   String get assetName => '$id-0.jpg';
   String get assetPackage => 'shrine_images';

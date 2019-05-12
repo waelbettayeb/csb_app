@@ -13,29 +13,25 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../model/event.dart';
 
 class EventCard extends StatelessWidget {
-  EventCard({this.imageAspectRatio: 33 / 49, this.product})
+  EventCard({this.imageAspectRatio: 33 / 49, this.event})
       : assert(imageAspectRatio == null || imageAspectRatio > 0);
 
   final double imageAspectRatio;
-  final Event product;
+  final Event event;
 
   static final kTextBoxHeight = 65.0;
 
   @override
   Widget build(BuildContext context) {
-    final NumberFormat formatter = NumberFormat.simpleCurrency(
-        decimalDigits: 0, locale: Localizations.localeOf(context).toString());
     final ThemeData theme = Theme.of(context);
 
-    final imageWidget = Image.asset(
-      product.assetName,
-      package: product.assetPackage,
-      fit: BoxFit.cover,
+    final imageWidget = Image.network(
+      event.image_url,
+        fit: BoxFit.cover
     );
 
     return Column(
@@ -55,7 +51,7 @@ class EventCard extends StatelessWidget {
             children: <Widget>[
               // TODO(larche): Make headline6 when available
               Text(
-                product == null ? '' : product.name,
+                (event == null || event.name == null) ? '' : event.name,
                 style: theme.textTheme.button,
                 softWrap: false,
                 overflow: TextOverflow.ellipsis,
@@ -64,8 +60,10 @@ class EventCard extends StatelessWidget {
               SizedBox(height: 4.0),
               // TODO(larche): Make subtitle2 when available
               Text(
-                product == null ? '' : formatter.format(product.date),
+                (event == null || event.date == null) ? ''
+                    : event.date.toString().replaceAll(":00.000",""),
                 style: theme.textTheme.caption,
+                textAlign: TextAlign.center,
               ),
             ],
           ),

@@ -18,36 +18,38 @@ import 'product_columns.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AsymmetricView extends StatelessWidget {
-  final List<Event> events;
-
-  AsymmetricView({Key key, this.events});
+  AsymmetricView({Key key});
 
   Widget _buildColumns(BuildContext context, DocumentSnapshot document, int index) {
-
-      double width = .59 * MediaQuery.of(context).size.width;
-      Widget column;
-      if (index % 2 == 0) {
+    Event event = Event(id: document.documentID, name: document["name"], image_url: document["image_url"], date: document["date"].toDate());
+    double width = .59 * MediaQuery.of(context).size.width;
+    Widget column;
+    if (index % 2 == 0) {
+      if (index % 4 == 0) {
         /// Even cases
-
-          int bottom = _evenCasesIndex(index);
-          column = TwoProductCardColumn(
-              bottom: null,
-              top: events[bottom]);
-
+        int bottom = _evenCasesIndex(index);
+        column = TwoProductCardColumn(
+            bottom: null,
+            top: event);
         width += 32.0;
-      } else {
-//        Odd cases
-        column = OneProductCardColumn(
-          event: events[_oddCasesIndex(index)],
+      }else{
+        column = CentredProductCardColumn(
+          event: event,
         );
       }
-      return Container(
-        width: width,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
-          child: column,
-        ),
+    } else {
+//        Odd cases
+      column = OneProductCardColumn(
+        event: event,
       );
+    }
+    return Container(
+      width: width,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: column,
+      ),
+    );
   }
 
   int _evenCasesIndex(int input) {
@@ -74,17 +76,17 @@ class AsymmetricView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: Firestore.instance.collection('events').snapshots(),
-      builder: (context, snapshot) {
-        if(!snapshot.hasData) return Center(child: const Text('Loading...'));
-        return ListView.builder(
-          itemCount: snapshot.data.documents.length,
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.fromLTRB(0.0, 34.0, 16.0, 44.0),
-          itemBuilder: (context, index) =>
-              _buildColumns(context, snapshot.data.documents[index], index),
-        );
-      }
+        stream: Firestore.instance.collection('events').snapshots(),
+        builder: (context, snapshot) {
+          if(!snapshot.hasData) return Center(child: const Text('Loading...'));
+          return ListView.builder(
+            itemCount: snapshot.data.documents.length,
+            scrollDirection: Axis.horizontal,
+            padding: EdgeInsets.fromLTRB(0.0, 34.0, 16.0, 44.0),
+            itemBuilder: (context, index) =>
+                _buildColumns(context, snapshot.data.documents[index], index),
+          );
+        }
     );
   }
 }

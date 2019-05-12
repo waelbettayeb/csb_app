@@ -45,7 +45,7 @@ class TwoProductCardColumn extends StatelessWidget {
             child: top != null
                 ? EventCard(
               imageAspectRatio: imageAspectRatio,
-              product: top,
+              event: top,
             )
                 : SizedBox(
               height: heightOfCards > 0 ? heightOfCards : spacerHeight,
@@ -54,9 +54,13 @@ class TwoProductCardColumn extends StatelessWidget {
           SizedBox(height: spacerHeight),
           Padding(
             padding: EdgeInsetsDirectional.only(end: 28.0),
-            child: EventCard(
+            child: bottom != null
+                ?EventCard(
               imageAspectRatio: imageAspectRatio,
-              product: bottom,
+              event: bottom,
+            )
+                : SizedBox(
+              height: heightOfCards > 0 ? heightOfCards : spacerHeight,
             ),
           ),
         ],
@@ -80,7 +84,27 @@ class OneProductCardColumn extends StatelessWidget {
           height: 40.0,
         ),
         EventCard(
-          product: event,
+          event: event,
+        ),
+      ],
+    );
+  }
+}
+class CentredProductCardColumn extends StatelessWidget {
+  CentredProductCardColumn({this.event});
+
+  final Event event;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      physics: const ClampingScrollPhysics(),
+      children: <Widget>[
+        SizedBox(
+          height: 40.0,
+        ),
+        EventCard(
+          event: event,
         ),
       ],
     );

@@ -14,8 +14,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'model/events_repository.dart';
-import 'model/event.dart';
 import 'supplemental/asymmetric_view.dart';
 
 class EventsPage extends StatelessWidget {
@@ -24,6 +22,6 @@ class EventsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AsymmetricView(events: EventsRepository.loadEvents());
+    return AsymmetricView();
   }
 }
