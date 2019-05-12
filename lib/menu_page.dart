@@ -76,10 +76,34 @@ class MenuPage extends StatelessWidget {
         padding: EdgeInsets.only(top: 40.0),
         color: kCSBDarkBlue,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: _categories
-            .map((Category c) => _buildCategory(c, context))
-            .toList()),
+          children: [Column(
+            mainAxisSize: MainAxisSize.min,
+            children: _categories
+              .map((Category c) => _buildCategory(c, context))
+              .toList()),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text(
+                      "Made with ❤ by ",
+                    style: TextStyle(
+                        color: kCSBWhite
+                    ),
+                  ),
+                    Text(
+                      "Wael",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: kCSBWhite
+                      ),
+                    ),
+                  ]
+              ),
+            ),
+          ]
+        ),
     );
   }
 }

@@ -31,7 +31,7 @@ class AboutPage extends StatelessWidget {
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [Text(
-                  "Made with ❤  by: "
+                  "Made with ❤ by "
               ),
                 Text(
                   "Wael",
